@@ -1,10 +1,11 @@
-import { Stack, Box, Container, Text } from '@chakra-ui/react';
+import { Stack, Box, Container, Text, Spacer } from '@chakra-ui/react';
+import { Link } from 'gatsby';
 import { FC } from 'react';
 
-import { HeaderProps } from './types';
+import HeaderDrawer from './HeaderDrawer';
 
 
-const Header: FC<HeaderProps> = () => {
+const Header: FC = () => {
     return (
         <Box as="header" sx={{ bg: 'linear-gradient(black, transparent)', pos: 'fixed', width: '100%' }}>
             <Container maxW='container.lg'>
@@ -14,9 +15,17 @@ const Header: FC<HeaderProps> = () => {
                     height={16}
                     spacing='24px'
                 >
-                    <Text>
-                        LOGO
+                    <Text
+                        as={Link}
+                        color="primary.textLight"
+                        display="flex"
+                        fontSize="x-large"
+                        fontWeight="bold" to="/"
+                    >
+                        COFFEE&nbsp;SHOP
                     </Text>
+                    <Spacer />
+                    <HeaderDrawer />
                 </Stack>
             </Container>
         </Box>
@@ -24,4 +33,5 @@ const Header: FC<HeaderProps> = () => {
 };
 
 export default Header;
+
 
