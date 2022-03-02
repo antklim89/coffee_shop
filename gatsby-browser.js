@@ -1,5 +1,5 @@
 /* eslint-disable react/jsx-filename-extension */
-import { ChakraProvider, extendTheme } from '@chakra-ui/react';
+import { ChakraProvider } from '@chakra-ui/react';
 import React from 'react';
 
 import './src/styles/globals.scss';
@@ -8,14 +8,7 @@ import '@fontsource/roboto/400-italic.css';
 import '@fontsource/roboto/700.css';
 import '@fontsource/roboto/700-italic.css';
 import Layout from './src/layouts/Layout';
-
-
-const theme = extendTheme({
-    colors: {
-        primary: 'red',
-        secondary: 'green',
-    }, 
-});
+import { theme } from './src/theme';
 
 
 export const wrapRootElement = ({ element }) => {

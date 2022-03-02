@@ -2,7 +2,7 @@ import { useStaticQuery, graphql } from 'gatsby';
 import { FC } from 'react';
 import { Helmet } from 'react-helmet';
 
-import { SeoProps, SeoQuery } from './types';
+import { SeoProps, SeoQuery } from './Seo.types';
 
 
 export const Seo: FC<SeoProps> = ({

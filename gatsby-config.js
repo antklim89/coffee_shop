@@ -17,13 +17,13 @@ module.exports = {
                 isUsingColorMode: true,
             },
         },
-        {
-            resolve: 'gatsby-source-shopify',
-            options: {
-                password: process.env.SHOPIFY_SHOP_PASSWORD,
-                storeUrl: process.env.GATSBY_SHOPIFY_STORE_URL,
-            },
-        },
+        // {
+        //     resolve: 'gatsby-source-shopify',
+        //     options: {
+        //         password: process.env.SHOPIFY_SHOP_PASSWORD,
+        //         storeUrl: process.env.GATSBY_SHOPIFY_STORE_URL,
+        //     },
+        // },
         {
             resolve: 'gatsby-source-filesystem',
             options: {
