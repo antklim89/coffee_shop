@@ -9,7 +9,7 @@ import Coffee from '~/assets/coffee.svg';
 
 const Header: FC = () => {
     return (
-        <Box as="header" sx={{ bg: 'linear-gradient(black, transparent)', pos: 'fixed', width: '100%' }}>
+        <Box as="header" sx={{ bg: 'linear-gradient(black, transparent)', pos: 'fixed', width: '100%', zIndex: 100 }}>
             <Container maxW='container.lg'>
                 <Stack
                     alignItems="center"

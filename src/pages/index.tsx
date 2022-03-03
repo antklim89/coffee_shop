@@ -2,6 +2,7 @@ import { PageProps, graphql } from 'gatsby';
 import { FC } from 'react';
 
 import { Seo } from '~/components/Seo';
+import Hero from '~/layouts/Hero';
 
 
 type DataProps = {
@@ -14,6 +15,7 @@ const UsingTypescript: FC<PageProps<DataProps>> = () => {
     return (
         <>
             <Seo title="Using TypeScript" />
+            <Hero />
         </>
     );
 };
