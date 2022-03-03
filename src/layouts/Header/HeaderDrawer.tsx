@@ -24,7 +24,7 @@ const HeaderDrawer: FC = () => {
             <Button 
                 colorScheme="primary" 
                 ref={btnRef}
-                variant="outline"
+                variant="solid"
                 onClick={onOpen}
             >
                 <HamburgerIcon />

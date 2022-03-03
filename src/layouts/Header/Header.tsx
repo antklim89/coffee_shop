@@ -4,6 +4,8 @@ import { FC } from 'react';
 
 import HeaderDrawer from './HeaderDrawer';
 
+import Coffee from '~/assets/coffee.svg';
+
 
 const Header: FC = () => {
     return (
@@ -16,13 +18,15 @@ const Header: FC = () => {
                     spacing='24px'
                 >
                     <Text
+                        alignItems="center"
                         as={Link}
                         color="primary.textLight"
                         display="flex"
                         fontSize="x-large"
                         fontWeight="bold" to="/"
                     >
-                        COFFEE&nbsp;SHOP
+                        <Coffee height="42px" width="42px" />
+                        <Box ml={[1, 2, 6]}>COFFEE&nbsp;SHOP</Box>
                     </Text>
                     <Spacer />
                     <HeaderDrawer />
