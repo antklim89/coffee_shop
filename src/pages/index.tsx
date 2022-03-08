@@ -1,4 +1,4 @@
-import { PageProps, graphql } from 'gatsby';
+import { PageProps } from 'gatsby';
 import { FC } from 'react';
 
 import { Seo } from '~/components/Seo';
@@ -22,13 +22,44 @@ const UsingTypescript: FC<PageProps<DataProps>> = () => {
 
 export default UsingTypescript;
 
-export const query = graphql`
-  {
-    site {
-      buildTime(formatString: "YYYY-MM-DD hh:mm a z")
-    }
-  }
-`;
+// export const query = graphql`
+//   {
+//     allShopifyProduct {
+//       nodes {
+//         description
+//         createdAt(fromNow: true)
+//         images {
+//           gatsbyImageData
+//           id
+//         }
+//         handle
+//         isGiftCard
+//         productType
+//         tags
+//         title
+//         totalInventory
+//         totalVariants
+//         variants {
+//           id
+//           price
+//           title
+//           weight
+//           weightUnit
+//           inventoryQuantity
+//           availableForSale
+//         }
+//         featuredImage {
+//           gatsbyImageData
+//         }
+//         hasOnlyDefaultVariant
+//         hasOutOfStockVariants
+//         status
+//       }
+//       totalCount
+//     }
+//   }
+// `;
+
 export async function getServerData() {
     try {
         return { props: { foo: 'bar' } };
