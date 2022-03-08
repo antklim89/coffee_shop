@@ -2,6 +2,7 @@ export default {
     'allShopifyProduct': {
         'nodes': [
             {
+                'id': '111',
                 'description': 'Simple cappucino',
                 'createdAt': '13 days ago',
                 'images': [

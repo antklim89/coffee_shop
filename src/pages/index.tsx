@@ -1,8 +1,12 @@
 import { PageProps } from 'gatsby';
 import { FC } from 'react';
 
+import product from '../mockProduct';
+
 import { Seo } from '~/components/Seo';
 import Hero from '~/layouts/Hero';
+import Products from '~/layouts/Products';
+import { Product } from '~/types';
 
 
 type DataProps = {
@@ -12,10 +16,13 @@ type DataProps = {
 }
 
 const UsingTypescript: FC<PageProps<DataProps>> = () => {
+    const products = product.allShopifyProduct.nodes as Product[];
+
     return (
         <>
             <Seo title="Using TypeScript" />
             <Hero />
+            <Products products={products} />
         </>
     );
 };
@@ -26,6 +33,7 @@ export default UsingTypescript;
 //   {
 //     allShopifyProduct {
 //       nodes {
+//         id
 //         description
 //         createdAt(fromNow: true)
 //         images {
