@@ -1,4 +1,7 @@
 
+/**
+ * @param {import('gatsby').CreateBabelConfigArgs}
+ */
 exports.onCreateBabelConfig = ({ actions }) => {
     actions.setBabelPreset({
         name: '@babel/preset-react',
@@ -6,12 +9,14 @@ exports.onCreateBabelConfig = ({ actions }) => {
     });
 };
 
-
+/**
+ * @param {import('gatsby').CreatePageArgs} 
+ */
 exports.createPages = async ({ actions }) => {
     const { createPage } = actions;
     createPage({
-        path: '/using-dsg',
-        component: require.resolve('./src/templates/post.tsx'),
+        path: '/product',
+        component: require.resolve('./src/templates/product.tsx'),
         context: {},
         defer: true,
     });
