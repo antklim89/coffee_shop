@@ -14,7 +14,7 @@ type DataProps = {
     }
 }
 
-const UsingTypescript: FC<PageProps<DataProps>> = ({ data }) => {
+const HomePage: FC<PageProps<DataProps>> = ({ data }) => {
     const products = data.allShopifyProduct.nodes.map((i: any) => ({
         ...i,
         images: i.images.map((j: any) => j.childImageSharp),
@@ -32,7 +32,7 @@ const UsingTypescript: FC<PageProps<DataProps>> = ({ data }) => {
     );
 };
 
-export default UsingTypescript;
+export default HomePage;
 
 // export const query = graphql`
 //   {
@@ -113,15 +113,3 @@ query Product {
     }
 }
 `;
-
-export async function getServerData() {
-    try {
-        return { props: { foo: 'bar' } };
-    } catch (error) {
-        return {
-            status: 500,
-            headers: {},
-            props: {},
-        };
-    }
-}
