@@ -1,3 +1,4 @@
+import { Container } from '@chakra-ui/react';
 import { PageProps } from 'gatsby';
 import { FC } from 'react';
 
@@ -22,7 +23,9 @@ const UsingTypescript: FC<PageProps<DataProps>> = () => {
         <>
             <Seo title="Using TypeScript" />
             <Hero />
-            <Products products={products} />
+            <Container maxW='container.lg' my={4}>
+                <Products products={products} />
+            </Container>
         </>
     );
 };
