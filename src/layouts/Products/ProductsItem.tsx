@@ -1,12 +1,13 @@
 import { LinkBox, Heading, Text, LinkOverlay, Box } from '@chakra-ui/react';
 import { Link } from 'gatsby';
-import { StaticImage } from 'gatsby-plugin-image';
+import { GatsbyImage } from 'gatsby-plugin-image';
 import { FC } from 'react';
 
 import { ProductsItemProps } from './Products.types';
 
 
 const ProductsItem: FC<ProductsItemProps> = ({ product }) => {
+
     return (
         <LinkBox
             _hover={{ shadow: 'xl', transform: 'scale(1.005)' }}
@@ -15,9 +16,7 @@ const ProductsItem: FC<ProductsItemProps> = ({ product }) => {
             minH={32}
             shadow="lg"
         >
-            {/* Placeholder */}
-            <StaticImage alt="A dinosaur" src='../../assets/placeholder.jpg' />
-            {/*  */}
+            <GatsbyImage alt={product.title} image={product.featuredImage.gatsbyImageData} />
             <Box p={2}>
                 <Heading as="h2" size="md">
                     <LinkOverlay

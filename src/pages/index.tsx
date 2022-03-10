@@ -1,8 +1,6 @@
 import { Container } from '@chakra-ui/react';
-import { PageProps } from 'gatsby';
+import { graphql, PageProps } from 'gatsby';
 import { FC } from 'react';
-
-import product from '../mockProduct';
 
 import { Seo } from '~/components/Seo';
 import Hero from '~/layouts/Hero';
@@ -11,17 +9,21 @@ import { Product } from '~/types';
 
 
 type DataProps = {
-  site: {
-    buildTime: string
-  }
+    allShopifyProduct: {
+        nodes: Product[]
+    }
 }
 
-const UsingTypescript: FC<PageProps<DataProps>> = () => {
-    const products = product.allShopifyProduct.nodes as Product[];
+const UsingTypescript: FC<PageProps<DataProps>> = ({ data }) => {
+    const products = data.allShopifyProduct.nodes.map((i: any) => ({
+        ...i,
+        images: i.images.map((j: any) => j.childImageSharp),
+        featuredImage: i.featuredImage.childImageSharp,
+    })) as Product[];
 
     return (
         <>
-            <Seo title="Using TypeScript" />
+            <Seo title="Home" />
             <Hero />
             <Container maxW='container.lg' my={4}>
                 <Products products={products} />
@@ -70,6 +72,47 @@ export default UsingTypescript;
 //     }
 //   }
 // `;
+
+export const query = graphql`
+query Product {
+    allShopifyProduct: allMockProductJson {
+        nodes {
+            id
+            description
+            createdAt
+            images {
+                childImageSharp {
+                    gatsbyImageData
+                }
+            }
+            handle
+            isGiftCard
+            productType
+            tags
+            title
+            totalInventory
+            totalVariants
+            variants {
+                id
+                price
+                title
+                weight
+                weightUnit
+                inventoryQuantity
+                availableForSale
+            }
+            featuredImage {
+                childImageSharp {
+                    gatsbyImageData
+                }
+            }
+            hasOnlyDefaultVariant
+            hasOutOfStockVariants
+            status
+        }
+    }
+}
+`;
 
 export async function getServerData() {
     try {
