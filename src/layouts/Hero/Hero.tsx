@@ -1,35 +1,54 @@
-import { Box } from '@chakra-ui/react';
+import { Box, Container, Text } from '@chakra-ui/react';
 import { graphql, useStaticQuery } from 'gatsby';
-import { GatsbyImage } from 'gatsby-plugin-image';
 import { FC } from 'react';
 
 
 const Hero: FC = () => {
-    const { file: { childImageSharp: { gatsbyImageData: image } } } = useStaticQuery(graphql`
+    const { file: { childImageSharp: { fluid } } } = useStaticQuery(graphql`
         query Hero {
             file(name: {eq: "coffee_bg"}) {
                 childImageSharp {
-                    gatsbyImageData(
-                        layout: CONSTRAINED
-                        placeholder: BLURRED
-                        width: 1920
-                        height: 480
-                        transformOptions: {fit: COVER, cropFocus: CENTER}
-                    )
+                    fluid {
+                        srcWebp 
+                    }
                 }
             }
         }
   `);
 
-
     return (
-        <Box position="relative" zIndex={-1}>
-            <Box height="480" position="absolute" width="100%">
-                <GatsbyImage alt="hero" image={image} />
-            </Box>
-            <Box height="480" zIndex={-1}>
-                Hero
-            </Box>
+        <Box
+            bgImage={fluid.srcWebp} 
+            bgRepeat="no-repeat" 
+            bgSize="cover"
+            height={[240,240,480]}
+        >
+            <Container
+                maxW='container.lg'
+            >
+                <Text
+                    as="h1"
+                    color="white"
+                    fontSize={['3xl', '5xl', '5xl']}
+                    fontWeight="bold"
+                    pt={20}
+                    width={['100%', '100%', '100%', '40%']}
+                >
+                    FRESH COFFEE
+                    IN THE MORNING
+                </Text>
+                <br />
+                <Text 
+                    color="white"
+                    display={['none', 'none', 'inline-block']}
+                    width={['100%', '100%', '100%', '40%']}
+                >
+                    Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                    Culpa vero cumque
+                    incidunt ut perspiciatis illo
+                    ipsa explicabo, nihil saepe repudiandae!
+                </Text>
+            </Container>
         </Box>
     );
 };
