@@ -1,9 +1,12 @@
 import { Box, Container, Text } from '@chakra-ui/react';
+import { useTheme } from '@emotion/react';
 import { graphql, useStaticQuery } from 'gatsby';
 import { FC } from 'react';
 
 
 const Hero: FC = () => {
+    const { custom: { headerHeight } } = useTheme() as { custom: {headerHeight: number } };
+
     const { file: { childImageSharp: { fluid } } } = useStaticQuery(graphql`
         query Hero {
             file(name: {eq: "coffee_bg"}) {
@@ -14,7 +17,7 @@ const Hero: FC = () => {
                 }
             }
         }
-  `);
+    `);
 
     return (
         <Box
@@ -22,6 +25,7 @@ const Hero: FC = () => {
             bgRepeat="no-repeat" 
             bgSize="cover"
             height={[240,240,480]}
+            mt={`-${headerHeight}`}
         >
             <Container
                 maxW='container.lg'
