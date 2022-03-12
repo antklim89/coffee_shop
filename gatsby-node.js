@@ -12,12 +12,26 @@ exports.onCreateBabelConfig = ({ actions }) => {
 /**
  * @param {import('gatsby').CreatePageArgs} 
  */
-exports.createPages = async ({ actions }) => {
+exports.createPages = async ({ actions, graphql }) => {
     const { createPage } = actions;
-    createPage({
-        path: '/product',
-        component: require.resolve('./src/templates/product.tsx'),
-        context: {},
-        defer: true,
-    });
+    const { data } = await graphql(`
+    query Product {
+        allShopifyProduct: allMockProductJson {
+            nodes {
+                id
+            }
+        }
+    }
+  `);
+  
+
+    for (const product of data.allShopifyProduct.nodes) {
+        createPage({
+            path: `/product/${product.id}`,
+            component: require.resolve('./src/templates/product.tsx'),
+            context: {},
+            defer: true,
+        });
+        
+    }
 };
