@@ -1,3 +1,4 @@
+import { Box } from '@chakra-ui/react';
 import { FC } from 'react';
 
 import Header from '../Header';
@@ -5,15 +6,20 @@ import Header from '../Header';
 
 const Layout: FC = ({ children }) => {
     return (
-        <div className="root">
+        <Box
+            bgColor="primary.100" 
+            display="flex" 
+            flexDirection="column"
+            height="100vh"
+        >
             <Header />
-            <main>
+            <Box as="main" flexGrow={1}>
                 {children}
-            </main>
-            <footer>
+            </Box>
+            <Box as="footer" flexShrink={0}>
                 FOOTER
-            </footer>
-        </div>
+            </Box>
+        </Box>
     );
 };
 

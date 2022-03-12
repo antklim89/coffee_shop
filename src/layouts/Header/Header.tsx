@@ -12,7 +12,7 @@ const Header: FC = () => {
     const { custom: { headerHeight } } = useTheme() as { custom: {headerHeight: number } };
     return (
         <>
-            <Box as="header" sx={{ bg: 'linear-gradient(black, transparent)', pos: 'fixed', width: '100%', zIndex: 100 }}>
+            <Box as="header" flexShrink={0} sx={{ bg: 'linear-gradient(black, transparent)', pos: 'fixed', width: '100%', zIndex: 100 }}>
                 <Container maxW='container.lg'>
                     <Stack
                         alignItems="center"
