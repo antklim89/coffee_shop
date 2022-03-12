@@ -17,24 +17,10 @@ a {
 }
 
 
-.root {
-    display: flex;
-    flex-direction: column;
-    height: 100vh;
-
-    > footer, > header {
-        flex-shrink: 0;
-    }
-
-    > main {
-        flex-grow: 1;
-    }
-}
-
 ul {
     list-style: none;
 }
 
 .chakra-ui-light, .chakra-ui-dark {
-    background-color: hsl(36, 15%, 51%);
+    background-color: hsl(36, 42%, 90%);
 }

@@ -7,7 +7,6 @@ import Header from '../Header';
 const Layout: FC = ({ children }) => {
     return (
         <Box
-            bgColor="primary.100" 
             display="flex" 
             flexDirection="column"
             height="100vh"
