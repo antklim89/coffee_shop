@@ -1,6 +1,6 @@
 
 
-export interface ProductVariant {
+export interface IProductVariant {
     id: string;
     price: string;
     title: string;

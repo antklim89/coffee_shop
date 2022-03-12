@@ -1,3 +1,3 @@
-export * from './Product';
-export * from './ProductVariant';
+export * from './IProduct';
+export * from './IProductVariant';
 export * from './IGatsbyImage';

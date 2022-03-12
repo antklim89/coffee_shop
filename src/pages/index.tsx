@@ -5,12 +5,12 @@ import { FC } from 'react';
 import { Seo } from '~/components/Seo';
 import Hero from '~/layouts/Hero';
 import Products from '~/layouts/Products';
-import { Product } from '~/types';
+import { IProduct } from '~/types';
 
 
 type DataProps = {
     allShopifyProduct: {
-        nodes: Product[]
+        nodes: IProduct[]
     }
 }
 
@@ -19,7 +19,7 @@ const HomePage: FC<PageProps<DataProps>> = ({ data }) => {
         ...i,
         images: i.images.map((j: any) => j.childImageSharp),
         featuredImage: i.featuredImage.childImageSharp,
-    })) as Product[];
+    })) as IProduct[];
 
     return (
         <>

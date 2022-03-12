@@ -1,8 +1,8 @@
 import { IGatsbyImage } from './IGatsbyImage';
-import { ProductVariant } from './ProductVariant';
+import { IProductVariant } from './IProductVariant';
 
 
-export interface Product {
+export interface IProduct {
     id: string;
     description: string;
     createdAt: string;
@@ -14,7 +14,7 @@ export interface Product {
     title: string;
     totalInventory: number;
     totalVariants: number;
-    variants: ProductVariant[];
+    variants: IProductVariant[];
     featuredImage: IGatsbyImage;
     hasOnlyDefaultVariant: true;
     hasOutOfStockVariants: false;

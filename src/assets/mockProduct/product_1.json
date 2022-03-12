@@ -1,12 +1,12 @@
 {
     "description": "Simple cappucino",
     "createdAt": "Thu, 10 Mar 2022 18:06:23 GMT",
-    "images": ["./placeholder.jpg"],
+    "images": ["./placeholder.jpg", "./placeholder_2.jpg", "./placeholder_3.jpg", "./placeholder_4.jpg", "./placeholder_5.jpg"],
     "handle": "cappucino",
     "isGiftCard": false,
     "productType": "",
     "tags": ["coffee"],
-    "title": "Cappucino",
+    "title": "Cappucino!!",
     "totalInventory": 5,
     "totalVariants": 1,
     "variants": [
@@ -15,6 +15,15 @@
             "price": "15.00",
             "title": "Default Title",
             "weight": 100,
+            "weightUnit": "GRAMS",
+            "inventoryQuantity": 5,
+            "availableForSale": true
+        },
+        {
+            "id": "bac5b745-c831-5b2a-8920-950c4bc187de",
+            "price": "20.00",
+            "title": "Default Title 2",
+            "weight": 200,
             "weightUnit": "GRAMS",
             "inventoryQuantity": 5,
             "availableForSale": true

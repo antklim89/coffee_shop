@@ -1,10 +1,10 @@
-import { Product } from '~/types';
+import { IProduct } from '~/types';
 
 
 export interface ProductsProps {
-    products: Product[]
+    products: IProduct[]
 }
 
 export interface ProductsItemProps {
-    product: Product
+    product: IProduct
 }
