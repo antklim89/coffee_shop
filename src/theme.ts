@@ -1,7 +1,7 @@
 import { extendTheme } from '@chakra-ui/react';
 
 
-export const theme = extendTheme({
+export default extendTheme({
     colors: {
         primary: {
             50: 'hsl(36, 10%, 51%)',
@@ -17,6 +17,7 @@ export const theme = extendTheme({
             text: 'black',
             textLight: 'white',
         },
-        secondary: 'green',
+        secondary: { 600: 'green' },
     },
+    custom: { headerHeight: '64px' },
 });

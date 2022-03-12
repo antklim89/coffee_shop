@@ -8,7 +8,7 @@ import '@fontsource/roboto/400-italic.css';
 import '@fontsource/roboto/700.css';
 import '@fontsource/roboto/700-italic.css';
 import Layout from './src/layouts/Layout';
-import { theme } from './src/theme';
+import theme from './src/theme';
 
 
 export const wrapRootElement = ({ element }) => {
