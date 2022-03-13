@@ -7,7 +7,6 @@ import { ProductsItemProps } from './Products.types';
 
 
 const ProductsItem: FC<ProductsItemProps> = ({ product }) => {
-
     return (
         <LinkBox
             _hover={{ shadow: 'xl', transform: 'scale(1.005)' }}
@@ -29,8 +28,6 @@ const ProductsItem: FC<ProductsItemProps> = ({ product }) => {
                 </Heading>
                 <Text fontSize="2xl" fontWeight="bold">${product.variants[0].price}</Text>
                 <Text fontSize="sm" fontWeight="bold">{product.variants[0].weight} {product.variants[0].weightUnit}</Text>
-                {product.description}
-
             </Box>
         </LinkBox>
     );
