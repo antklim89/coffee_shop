@@ -1,9 +1,9 @@
-import { HamburgerIcon } from '@chakra-ui/icons';
 import {
     Button, Stack, Drawer, DrawerOverlay, DrawerContent, DrawerBody, useMediaQuery,  useDisclosure,
 } from '@chakra-ui/react';
 import { useTheme } from '@emotion/react';
 import { FC, useRef } from 'react';
+import { FaHamburger } from 'react-icons/fa';
 
 import HeaderLinks from './HeaderLinks';
 
@@ -27,7 +27,7 @@ const HeaderDrawer: FC = () => {
                 variant="solid"
                 onClick={onOpen}
             >
-                <HamburgerIcon />
+                <FaHamburger />
             </Button>
             <Drawer
                 finalFocusRef={btnRef}

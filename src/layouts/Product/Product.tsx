@@ -13,7 +13,9 @@ import {
     NumberInputStepper, 
 } from '@chakra-ui/react';
 import { GatsbyImage } from 'gatsby-plugin-image';
-import { ChangeEventHandler, FC, useCallback, useEffect, useState } from 'react';
+import {
+    ChangeEventHandler, FC, useCallback, useEffect, useMemo, useState, 
+} from 'react';
 import { Carousel } from 'react-responsive-carousel';
 
 import { useCart } from '~/components/CartProvider';
@@ -24,7 +26,8 @@ import 'react-responsive-carousel/lib/styles/carousel.min.css';
 const Product: FC<IProduct> = ({
     id, images, title, description, variants, createdAt, featuredImage, 
 }) => {
-    const { cart, updateCartItem } = useCart();
+    const { cart, updateCartItem, addToCart, removeFromCart } = useCart();
+    const isInCart = useMemo(() => cart.find((storedCartItem) => storedCartItem.id === id), [cart.length]);
 
 
     const [cartItem, setCartItem] = useState<ICartItem>(() => (
@@ -62,6 +65,11 @@ const Product: FC<IProduct> = ({
         setCartItem((prevCartItem) => ({ ...prevCartItem, qty }));
     }, []);
 
+    const handleToggleCart = useCallback(() => {
+        if (isInCart) removeFromCart(cartItem);
+        else addToCart(cartItem);
+    }, [isInCart]);
+
     useEffect(() => {
         updateCartItem(cartItem);
     }, [cartItem]);
@@ -79,7 +87,14 @@ const Product: FC<IProduct> = ({
             <VStack alignItems="start">
                 <Heading>{title}</Heading>
                 <Text>{description}</Text>
-                <Button colorScheme="primary" variant="solid" w="100%">Add To Cart</Button>
+                <Button 
+                    colorScheme="primary" 
+                    variant="solid" 
+                    w="100%" 
+                    onClick={handleToggleCart}
+                >
+                    {isInCart ? 'Remove From Cart' : 'Add To Cart'}
+                </Button>
 
                 <Heading as="h3" pt={10}>Weight</Heading>
                 <Select fontSize="2xl" value={cartItem.variant.id} onChange={handeChangeVariant}>

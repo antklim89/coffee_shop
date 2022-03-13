@@ -3,6 +3,7 @@ import { useTheme } from '@emotion/react';
 import { Link } from 'gatsby';
 import { FC } from 'react';
 
+import HeaderCartButton from './HeaderCartButton';
 import HeaderDrawer from './HeaderDrawer';
 
 import Coffee from '~/assets/coffee.svg';
@@ -33,6 +34,7 @@ const Header: FC = () => {
                         </Text>
                         <Spacer />
                         <HeaderDrawer />
+                        <HeaderCartButton />
                     </Stack>
                 </Container>
             </Box>
