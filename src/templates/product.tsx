@@ -15,7 +15,7 @@ const ProductPage: FC<PageProps<DataProps>> = ({ data }) => {
     const products = {
         ...data.product as any,
         images: data.product.images.map((j: any) => ({ ...j, gatsbyImageData: j.childImageSharp.gatsbyImageData })),
-        featuredImage: data.product.featuredImage.gatsbyImageData,
+        featuredImage: (data as any).product.featuredImage.childImageSharp.gatsbyImageData,
     } as IProduct;
 
     return (

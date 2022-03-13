@@ -2,6 +2,7 @@
 import { ChakraProvider } from '@chakra-ui/react';
 import React from 'react';
 
+import CartProvider from './src/components/CartProvider';
 import './src/styles/globals.scss';
 import '@fontsource/roboto/400.css';
 import '@fontsource/roboto/400-italic.css';
@@ -14,9 +15,11 @@ import theme from './src/theme';
 export const wrapRootElement = ({ element }) => {
     return (
         <ChakraProvider theme={theme}>
-            <Layout>
-                {element}
-            </Layout>
+            <CartProvider>
+                <Layout>
+                    {element}
+                </Layout>
+            </CartProvider>
         </ChakraProvider>
     );
 };
