@@ -1,9 +1,9 @@
 import { Container } from '@chakra-ui/react';
-import { GetServerData, Link, PageProps  } from 'gatsby';
+import { GetServerData, PageProps  } from 'gatsby';
 import { FC } from 'react';
 
 import { Seo } from '~/components/Seo';
-import Products from '~/layouts/Products';
+import Catalog from '~/layouts/Catalog';
 import { IProduct } from '~/types';
 import { fetchProducts } from '~/utils';
 
@@ -22,13 +22,11 @@ const HomePage: FC<PageProps<DataProps, null, null, IProduct[]>> = ({ serverData
         featuredImage: i.featuredImage.childImageSharp,
     })) as IProduct[];
 
-
     return (
         <>
             <Seo title="Products" />
             <Container maxW='container.lg' my={4}>
-                <Link to="?title=cappucino">Link</Link>
-                <Products products={products} />
+                <Catalog products={products} />
             </Container>
         </>
     );
