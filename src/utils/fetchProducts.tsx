@@ -55,7 +55,7 @@ export const fetchProducts = async (
     if (typeof tags === 'string') variables.description = `/${tags}/i`;
 
     const { data } = await fetch(
-        'http://192.168.90.19:3000/___graphql',
+        `${process.env.API_URL}/___graphql`,
         {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
