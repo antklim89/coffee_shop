@@ -5,7 +5,7 @@ import { FC, useCallback, useEffect, useRef, useState } from 'react';
 
 const Search: FC = () => {
     const [searchValue, setSearchValue] = useState('');
-    const [searchType, setSearchType] = useState('title');
+    const [searchKey, setSearchKey] = useState('title');
     const timeout = useRef<NodeJS.Timeout | null>(null);
 
     const handleChangeSearchValue: React.ChangeEventHandler<HTMLInputElement> = useCallback((e) => {
@@ -13,25 +13,29 @@ const Search: FC = () => {
     }, []);
 
     const handleChangeSearchType: React.ChangeEventHandler<HTMLSelectElement> = useCallback((e) => {
-        setSearchType(e.target.value);
+        setSearchKey(e.target.value);
     }, []);
 
     const setSearchParams = useCallback(() => {
-        const searchParams = new URLSearchParams();
+        const searchParams = new URLSearchParams(location.search);
         if (searchValue.length === 0) {
-            navigate(location.pathname, { replace: true });
+            searchParams.delete('searchValue');
+            searchParams.delete('searchKey');
+            navigate(`${location.pathname}?${searchParams}`.replace(/\?$/i, ''), { replace: true });
             return;
         }
-        searchParams.set(searchType, searchValue);
+        searchParams.set('searchValue', searchValue);
+        searchParams.set('searchKey', searchKey);
+        console.debug('searchParams: \n', searchParams.toString());
         navigate(`?${searchParams}`, { replace: true });
-    }, [searchValue, searchType]);
+    }, [searchValue, searchKey]);
 
 
     useEffect(() => {
         if (timeout.current)
             clearTimeout(timeout.current);
         timeout.current = setTimeout(setSearchParams, 700);
-    }, [searchValue, searchType]);
+    }, [searchValue, searchKey]);
 
     return (
         <Box display="flex" mb={10}>
@@ -41,7 +45,7 @@ const Search: FC = () => {
             />
             <Select
                 bg="white" flexBasis={200} flexGrow={1}
-                value={searchType} onChange={handleChangeSearchType}
+                value={searchKey} onChange={handleChangeSearchType}
             >
                 <option value="title">Title</option>
                 <option value="description">Description</option>
