@@ -34,82 +34,52 @@ const HomePage: FC<PageProps<DataProps>> = ({ data }) => {
 
 export default HomePage;
 
-// export const query = graphql`
-//   {
-//     allShopifyProduct {
-//       nodes {
-//         id
-//         description
-//         createdAt(fromNow: true)
-//         images {
-//           gatsbyImageData
-//           id
-//         }
-//         handle
-//         isGiftCard
-//         productType
-//         tags
-//         title
-//         totalInventory
-//         totalVariants
-//         variants {
-//           id
-//           price
-//           title
-//           weight
-//           weightUnit
-//           inventoryQuantity
-//           availableForSale
-//         }
-//         featuredImage {
-//           gatsbyImageData
-//         }
-//         hasOnlyDefaultVariant
-//         hasOutOfStockVariants
-//         status
-//       }
-//       totalCount
-//     }
-//   }
-// `;
 
 export const query = graphql`
-query Product {
-    allShopifyProduct: allMockProductJson {
-        nodes {
-            id
-            description
-            createdAt
-            images {
-                childImageSharp {
-                    gatsbyImageData
-                }
-            }
-            handle
-            isGiftCard
-            productType
-            tags
-            title
-            totalInventory
-            totalVariants
-            variants {
-                id
-                price
-                title
-                weight
-                weightUnit
-                inventoryQuantity
-                availableForSale
-            }
-            featuredImage {
-                childImageSharp {
-                    gatsbyImageData
-                }
-            }
-            hasOnlyDefaultVariant
-            hasOutOfStockVariants
-            status
-        }
+query HomePage {
+    allShopifyProduct: allMockProductJson(
+        limit: 8
+        sort: {fields: createdAt, order: DESC}
+      ) {
+      nodes {
+        ...ProductFragment
+      }
     }
-}
+  }
+  
+  fragment ProductFragment on MockProductJson {
+    id
+    description
+    createdAt
+    images {
+      childImageSharp {
+        gatsbyImageData
+      }
+    }
+    handle
+    isGiftCard
+    productType
+    tags
+    title
+    totalInventory
+    totalVariants
+    variants {
+      id
+      price
+      title
+      weight
+      weightUnit
+      inventoryQuantity
+      availableForSale
+    }
+    featuredImage {
+      childImageSharp {
+        gatsbyImageData
+      }
+    }
+    hasOnlyDefaultVariant
+    hasOutOfStockVariants
+    status
+  }
+  
 `;
